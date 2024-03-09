@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="css/asr.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class=" mt-5">
+            <div class="row">
+                <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+                    <p class="category"></p>
+                    <!-- Nav tabs -->
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs justify-content-center" role="tablist" style="padding: 0px;    display: flex;">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
+                                        <!-- <i class="now-ui-icons objects_umbrella-13"></i>  -->
+                                        STS
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                                        <!-- <i class="now-ui-icons shopping_cart-simple"></i>  -->
+                                        TTS
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                                        <!-- <i class="now-ui-icons shopping_shop"></i>  -->
+                                        STT
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                                        <!-- <i class="now-ui-icons ui-2_settings-90"></i>  -->
+                                        Translate
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body" style="padding: 0px !important;">
+                            <!-- Tab panes -->
+                            <div class="tab-content text-center">
+                                <div class="tab-pane active" id="home" role="tabpanel">
+                                    <div class="content" style="text-align: center;">
+                                        <div style="margin: auto;">
+                                            <table style="width: 400px;">
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <div>
+                                                                <label style="text-align: left;color: #fff;">Translate From</label><br />
+                                                                <select id="source_lang" class="form-control">
+                                                                    <option value="as">Assamese</option>
+                                                                    <option value="bn">Bengali</option>
+                                                                    <option value="en">English</option>
+                                                                    <option value="gu">Gujarati</option>
+                                                                    <option value="hi">Hindi</option>
+                                                                    <option value="kn">Kannada</option>
+                                                                    <option value="ks">Kashmiri</option>
+                                                                    <option value="ml">Malayalam</option>
+                                                                    <option value="mr">Marathi</option>
+                                                                    <option value="pa">Punjabi</option>
+                                                                    <option value="sa">Sanskrit</option>
+                                                                    <option value="ta">Tamil</option>
+                                                                    <option value="te">Telugu</option>
+                                                                    <option value="ur">Urdu</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <!-- <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div> -->
+                                                            <div>
+                                                                <label style="text-align: left;color: #fff;">Translate To</label><br />
+                                                                <select id="dest_lang" class="form-control">
+                                                                    <option value="as">Assamese</option>
+                                                                    <option value="bn">Bengali</option>
+                                                                    <option value="en">English</option>
+                                                                    <option value="gu">Gujarati</option>
+                                                                    <option value="hi">Hindi</option>
+                                                                    <option value="kn">Kannada</option>
+                                                                    <option value="ks">Kashmiri</option>
+                                                                    <option value="ml">Malayalam</option>
+                                                                    <option value="mr">Marathi</option>
+                                                                    <option value="pa">Punjabi</option>
+                                                                    <option value="sa">Sanskrit</option>
+                                                                    <option value="ta">Tamil</option>
+                                                                    <option value="te">Telugu</option>
+                                                                    <option value="ur">Urdu</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: center;">
+                                                        <div class="button-container" style="display: inline-block;margin: auto;margin-top: 50px;">
+                                                            <input type="checkbox" id="micButton" class="mic-checkbox" onclick="callme()">
+                                                            <label for="micButton" class="mic-button" onclick="callme()">
+                                                                <div class='mic' onclick="callme()">
+                                                                    <div class='mic-button-loader' onclick="callme()">
+                                                                    </div>
+                                                                    <div class="mic-base" onclick="callme()">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="button-message" onclick="callme()">
+                                                                    <span style="font-size: 55px;text-align: center;margin-left: 7px;" onclick="callme()">
+                                                                        <i class="fa fa-microphone" aria-hidden="true" onclick="callme()"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <button id="startButton" style="display: none;">Start Listening</button>
+                                    <p id="output" style="color: #fff;"></p>
+                                    <p id="translation" style="color: #fff;"></p>
+
+                                </div>
+                                <div class="tab-pane" id="profile" role="tabpanel">
+                                    <div class="content" style="text-align: center;">
+                                        <div style="margin: auto;width: 100%;">
+                                            <div class="row">
+                                                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                                                    <div class="card white z-depth-2">
+                                                        <div class="card-content window">
+                                                            <div class="grey lighten-2 window-header">
+                                                                <!-- <div class="window-buttons"></div> -->
+                                                                <div class="row" style="margin: 0px !important;">
+                                                                    <div style="width: 40%;">
+                                                                        <select id="tts_source_lang" class="form-control ddl" style="width:80%">
+                                                                            <option value="as">Assamese</option>
+                                                                            <option value="bn">Bengali</option>
+                                                                            <option value="en">English</option>
+                                                                            <option value="gu">Gujarati</option>
+                                                                            <option value="hi">Hindi</option>
+                                                                            <option value="kn">Kannada</option>
+                                                                            <option value="ks">Kashmiri</option>
+                                                                            <option value="ml">Malayalam</option>
+                                                                            <option value="mr">Marathi</option>
+                                                                            <option value="pa">Punjabi</option>
+                                                                            <option value="sa">Sanskrit</option>
+                                                                            <option value="ta">Tamil</option>
+                                                                            <option value="te">Telugu</option>
+                                                                            <option value="ur">Urdu</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div style="width: 20%;" style="color: #FFF;">
+                                                                        <label style="margin-top: 10px;color: #fff;">To</label>
+                                                                    </div>
+                                                                    <div style="width: 40%;">
+                                                                        <select id="tts_dest_lang" class="form-control ddl" style="float: right;width:80%">
+                                                                            <option value="as">Assamese</option>
+                                                                            <option value="bn">Bengali</option>
+                                                                            <option value="en">English</option>
+                                                                            <option value="gu">Gujarati</option>
+                                                                            <option value="hi">Hindi</option>
+                                                                            <option value="kn">Kannada</option>
+                                                                            <option value="ks">Kashmiri</option>
+                                                                            <option value="ml">Malayalam</option>
+                                                                            <option value="mr">Marathi</option>
+                                                                            <option value="pa">Punjabi</option>
+                                                                            <option value="sa">Sanskrit</option>
+                                                                            <option value="ta">Tamil</option>
+                                                                            <option value="te">Telugu</option>
+                                                                            <option value="ur">Urdu</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="window-editor grey-text text-darken-1">
+                                                                <textarea id="ttsTextarea"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-bottom: 20px;">
+                                                        <input type="button" value="Convert" class="btn btn-muted" onclick="textToSpeechConversion()">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="messages" role="tabpanel">
+                                    <div class="content" style="text-align: center;">
+                                        <div style="margin: auto;">
+                                            <table style="width: 400px;">
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <div>
+                                                                <label style="text-align: left;color: #fff;">Translate From</label><br />
+                                                                <select id="source_lang1" class="form-control">
+                                                                    <option value="as">Assamese</option>
+                                                                    <option value="bn">Bengali</option>
+                                                                    <option value="en">English</option>
+                                                                    <option value="gu">Gujarati</option>
+                                                                    <option value="hi">Hindi</option>
+                                                                    <option value="kn">Kannada</option>
+                                                                    <option value="ks">Kashmiri</option>
+                                                                    <option value="ml">Malayalam</option>
+                                                                    <option value="mr">Marathi</option>
+                                                                    <option value="pa">Punjabi</option>
+                                                                    <option value="sa">Sanskrit</option>
+                                                                    <option value="ta">Tamil</option>
+                                                                    <option value="te">Telugu</option>
+                                                                    <option value="ur">Urdu</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <!-- <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div> -->
+                                                            <div>
+                                                                <label style="text-align: left;color: #fff;">Translate To</label><br />
+                                                                <select id="dest_lang1" class="form-control">
+                                                                    <option value="as">Assamese</option>
+                                                                    <option value="bn">Bengali</option>
+                                                                    <option value="en">English</option>
+                                                                    <option value="gu">Gujarati</option>
+                                                                    <option value="hi">Hindi</option>
+                                                                    <option value="kn">Kannada</option>
+                                                                    <option value="ks">Kashmiri</option>
+                                                                    <option value="ml">Malayalam</option>
+                                                                    <option value="mr">Marathi</option>
+                                                                    <option value="pa">Punjabi</option>
+                                                                    <option value="sa">Sanskrit</option>
+                                                                    <option value="ta">Tamil</option>
+                                                                    <option value="te">Telugu</option>
+                                                                    <option value="ur">Urdu</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: center;">
+                                                        <div class="button-container" style="display: inline-block;margin: auto;margin-top: 50px;">
+                                                            <input type="checkbox" id="micButton1" class="mic-checkbox" onclick="speechRecg()">
+                                                            <label for="micButton1" class="mic-button" onclick="speechRecg()">
+                                                                <div class='mic' onclick="speechRecg()">
+                                                                    <div class='mic-button-loader' onclick="speechRecg()">
+                                                                    </div>
+                                                                    <div class="mic-base" onclick="speechRecg()">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="button-message" onclick="speechRecg()">
+                                                                    <span style="font-size: 55px;text-align: center;margin-left: 7px;"
+                                                                          onclick="speechRecg()">
+                                                                        <i class="fa fa-microphone" aria-hidden="true" onclick="speechRecg()"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <div class="window-editor grey-text text-darken-1">
+                                                <textarea id="sttTextarea" style="background: #000 !important;color: #fff;" readonly="true"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="settings" role="tabpanel">
+                                    <div class="content" style="text-align: center;">
+                                        <div style="margin: auto;width: 100%;">
+                                            <div class="row">
+                                                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                                                    <button id="startButton1" style="display: none;">Start Listening</button>
+                                                    <div class="card white z-depth-2">
+                                                        <div class="card white z-depth-2">
+                                                            <div class="card-content window">
+                                                                <div class="grey lighten-2 window-header">
+                                                                    <!-- <div class="window-buttons"></div> -->
+                                                                    <div class="row" style="margin: 0px !important;">
+                                                                        <div style="width: 40%;">
+                                                                            <select id="trans_source_lang" class="form-control ddl" style="width:80%">
+                                                                                <option value="as">Assamese</option>
+                                                                                <option value="bn">Bengali</option>
+                                                                                <option value="en">English</option>
+                                                                                <option value="gu">Gujarati</option>
+                                                                                <option value="hi">Hindi</option>
+                                                                                <option value="kn">Kannada</option>
+                                                                                <option value="ks">Kashmiri</option>
+                                                                                <option value="ml">Malayalam</option>
+                                                                                <option value="mr">Marathi</option>
+                                                                                <option value="pa">Punjabi</option>
+                                                                                <option value="sa">Sanskrit</option>
+                                                                                <option value="ta">Tamil</option>
+                                                                                <option value="te">Telugu</option>
+                                                                                <option value="ur">Urdu</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div style="width: 20%;color: #FFF;">
+                                                                            <label style="margin-top: 10px;color: #fff;">To</label>
+                                                                        </div>
+                                                                        <div style="width: 40%;">
+                                                                            <select id="trans_dest_lang" class="form-control ddl" style="float: right;width:80%">
+                                                                                <option value="as">Assamese</option>
+                                                                                <option value="bn">Bengali</option>
+                                                                                <option value="en">English</option>
+                                                                                <option value="gu">Gujarati</option>
+                                                                                <option value="hi">Hindi</option>
+                                                                                <option value="kn">Kannada</option>
+                                                                                <option value="ks">Kashmiri</option>
+                                                                                <option value="ml">Malayalam</option>
+                                                                                <option value="mr">Marathi</option>
+                                                                                <option value="pa">Punjabi</option>
+                                                                                <option value="sa">Sanskrit</option>
+                                                                                <option value="ta">Tamil</option>
+                                                                                <option value="te">Telugu</option>
+                                                                                <option value="ur">Urdu</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="window-editor grey-text text-darken-1">
+                                                                <textarea id="trans_langtextSource"></textarea>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div style="margin-bottom: 20px;">
+                                                        <input type="button" value="Translate" class="btn btn-muted" onclick="neuraltranslation()">
+                                                    </div>
+                                                    <div class="card white z-depth-2">
+                                                        <div class="card-content window">
+                                                            <div class="grey lighten-2 window-header">
+                                                            </div>
+                                                            <div class="window-editor grey-text text-darken-1">
+                                                                <textarea id="trans_langtextDest"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+        <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+        <script src="js/asr.js"></script>
+    </form>
+</body>
+</html>
